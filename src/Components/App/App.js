@@ -52,12 +52,23 @@ class App extends Component {
         }
       ]
     };
-    this.state.addTrack = this.state.addTrack.bind(this);
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
   addTrack(track) {
     if (
       this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)
+    ) {
+      return;
+    }
+  }
+  //   create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
+  removeTrack(track) {
+    if (
+      this.state.playlistTracks.find(
+        removedTrack => removedTrack.id === track.id
+      )
     ) {
       return;
     }
@@ -74,11 +85,12 @@ class App extends Component {
           <div className="App-playlist">
             <SearchResults
               searchResults={this.state.SearchResults}
-              onAdd={this.state.addTrack()}
+              onAdd={this.addTrack}
             />
             <Playlist
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
+              onRemove={this.removeTrack}
             />
           </div>
         </div>

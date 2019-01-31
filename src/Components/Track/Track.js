@@ -4,9 +4,38 @@ import "./Track.css";
 class Track extends Component {
   constructor(props) {
     super(props);
-
     this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
+
+  renderAction() {
+    return (
+      // In the Track.js '-' element, add an onClick property with the value set to the this.removeTrack method.
+      //   I think I need to break out the different values so this.addTrack is on the '+' and '-' is on the this.removeTrack
+      <a className="Track-action" onClick={this.addTrack}>
+        {this.props.isRemoval ? "-" : "+"}
+        {/* {if(this.props.isRemove) {
+            return '-';
+        } else {
+            return '+';
+        }} */}
+      </a>
+    );
+  }
+
+  addTrack() {
+    if (!this.props.isRemoval) {
+      // this is not a function
+      this.props.onAdd(this.props.track);
+    }
+  }
+
+  removeTrack() {
+    if (this.props.isRemoval) {
+      this.props.onRemove(this.props.track);
+    }
+  }
+
   render() {
     return (
       <div className="Track">
@@ -19,20 +48,6 @@ class Track extends Component {
         {this.renderAction()}
       </div>
     );
-  }
-
-  renderAction() {
-    return (
-      <a className="Track-action" onClick={this.addTrack}>
-        {this.props.isRemoval ? "-" : "+"}
-      </a>
-    );
-  }
-  //   below is probably wrong. Create an .addTrack() method in the Track component. Use it to add this.props.track to the playlist.
-  addTrack() {
-    if (this.props.onAdd === true) {
-      return this.props.track;
-    }
   }
 }
 
