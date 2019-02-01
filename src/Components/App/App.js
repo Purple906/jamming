@@ -54,6 +54,7 @@ class App extends Component {
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
 
   addTrack(track) {
@@ -62,7 +63,7 @@ class App extends Component {
       return;
     } else {
       playlistTracks.push(track);
-      this.setState(playlistTracks);
+      this.setState({ playlistTracks });
     }
   }
   //   create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
@@ -72,7 +73,12 @@ class App extends Component {
     const tmpTracks = playlistTracks.filter(
       savedTrack => savedTrack.id !== track.id
     );
-    this.setState(playlistTracks, tmpTracks);
+    this.setState({ playlistTracks, tmpTracks });
+  }
+
+  //   In App.js create a method called updatePlaylistName with the following functionality: Accepts a name argument, Sets the state of the playlist name to the input argument
+  updatePlaylistName(name) {
+    this.setState({ playlistName: name.target.value });
   }
 
   render() {
@@ -92,6 +98,7 @@ class App extends Component {
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
+              onNameChange={this.updatePlaylistName}
             />
           </div>
         </div>
