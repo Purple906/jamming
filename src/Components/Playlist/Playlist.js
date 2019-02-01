@@ -10,7 +10,7 @@ class Playlist extends Component {
   }
 
   handleNameChange(e) {
-    this.onNameChange({ playlistName: e.target.value });
+    this.props.onNameChange({ playlistName: e.target.value });
   }
 
   render() {
