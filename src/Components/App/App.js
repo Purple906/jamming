@@ -81,7 +81,7 @@ class App extends Component {
 
   //   number 57 In App.js create a method called updatePlaylistName with the following functionality: Accepts a name argument, Sets the state of the playlist name to the input argument
   updatePlaylistName(name) {
-    this.setState({ playlistName: name.target.value });
+    this.setState({ playlistName: name });
   }
   //   number 63
   savePlaylist() {
