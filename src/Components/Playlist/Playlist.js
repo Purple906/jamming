@@ -23,7 +23,9 @@ class Playlist extends Component {
           //   Pass isRemoval with a value of true down to TrackList.
           isRemoval={true}
         />
-        <a className="Playlist-save">SAVE TO SPOTIFY</a>
+        <a className="Playlist-save" onClick={this.props.onSave}>
+          SAVE TO SPOTIFY
+        </a>
       </div>
     );
   }

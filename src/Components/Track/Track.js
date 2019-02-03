@@ -14,7 +14,7 @@ class Track extends Component {
       //   I think I need to break out the different values so this.addTrack is on the '+' and '-' is on the this.removeTrack
       <a className="Track-action" onClick={this.addTrack}>
         {this.props.isRemoval ? "-" : "+"}
-        {/* {if(this.props.isRemove) {
+        {/* {if(this.props.isRemove === true) {
             return '-';
         } else {
             return '+';
