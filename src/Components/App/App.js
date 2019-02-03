@@ -4,7 +4,7 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-// import Spotify from "...//util/Spotify";
+import Spotify from "../../util/Spotify";
 
 class App extends Component {
   constructor(props) {
@@ -61,36 +61,46 @@ class App extends Component {
   }
 
   addTrack(track) {
-    const playlistTracks = this.state;
+    const { playlistTracks } = this.state;
     if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
-    } else {
-      playlistTracks.push(track);
-      this.setState({ playlistTracks });
     }
+    playlistTracks.push(track);
+    this.setState({ playlistTracks });
+    // } else {
+    //   playlistTracks.push(track);
+    //   this.setState({ playlistTracks });
+    // }
   }
   //   number 49 create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
   removeTrack(track) {
-    const playlistTracks = this.state;
+    const { playlistTracks } = this.state;
 
     const tmpTracks = playlistTracks.filter(
       savedTrack => savedTrack.id !== track.id
     );
-    this.setState({ playlistTracks, tmpTracks });
+    this.setState({ playlistTracks: tmpTracks });
   }
 
   //   number 57 In App.js create a method called updatePlaylistName with the following functionality: Accepts a name argument, Sets the state of the playlist name to the input argument
+  //   updatePlaylistName(name) {
+  //     this.setState({ playlistName: name.target.value });
+  //   }
+
+  //   Answer: The value of name here is going to be whatever you call the onNameChange prop with in Playlist.js. You could call it with an event (which would have a target and a value) but you it's probably better to get the name off the event at the Playlist level and just call this with the actual name as a string
   updatePlaylistName(name) {
-    this.setState({ playlistName: name.target.value });
+    this.setState({ playlistName: name });
   }
-  //   number 63
+
+  //   number 63 In App.js create a method called savePlaylist with the following functionality: Generates an array of uri values called trackURIs from the playlistTracks property. In a later step, you will pass the trackURIs array and playlistName to a method that will save the user's playlist to their account.
   savePlaylist() {
     const trackURIs = this.state.playlistTracks.id.map();
   }
   // number 67 In App.js create a method called search with the following functionality: Accepts a search term, Logs the term to the console
-  search() {
-    const term = "";
-    console.log(term);
+  search(term) {
+    Spotify.search(term).then(term => {
+      this.setState({ SearchResults: term });
+    });
   }
 
   render() {

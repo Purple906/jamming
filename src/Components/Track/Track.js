@@ -12,13 +12,11 @@ class Track extends Component {
     return (
       // In the Track.js '-' element, add an onClick property with the value set to the this.removeTrack method.
       //   I think I need to break out the different values so this.addTrack is on the '+' and '-' is on the this.removeTrack
-      <a className="Track-action" onClick={this.addTrack}>
+      <a
+        className="Track-action"
+        onClick={this.props.isRemoval ? this.removeTrack : this.addTrack}
+      >
         {this.props.isRemoval ? "-" : "+"}
-        {/* {if(this.props.isRemove === true) {
-            return '-';
-        } else {
-            return '+';
-        }} */}
       </a>
     );
   }

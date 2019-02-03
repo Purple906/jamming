@@ -8,9 +8,12 @@ class Playlist extends Component {
 
     this.handleNameChange = this.handleNameChange.bind(this);
   }
-
+  //   Whatever you pass to this.props.onNameChange is what you have to deal with in App.js … here you were passing an object with a playlistName property with the value of the input (event.target is the input element), so updatePlaylistName was getting { playlistName: "whatever was in the input field" } … that obviously doesn't have a target (so it's undefined) and you can't access value of undefined
+  //   handleNameChange(e) {
+  //     this.props.onNameChange({ playlistName: e.target.value });
+  //   }
   handleNameChange(e) {
-    this.props.onNameChange({ playlistName: e.target.value });
+    this.props.onNameChange(e.target.value);
   }
 
   render() {
