@@ -67,12 +67,7 @@ class App extends Component {
     }
     playlistTracks.push(track);
     this.setState({ playlistTracks });
-    // } else {
-    //   playlistTracks.push(track);
-    //   this.setState({ playlistTracks });
-    // }
   }
-  //   number 49 create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
   removeTrack(track) {
     const { playlistTracks } = this.state;
 
@@ -86,7 +81,6 @@ class App extends Component {
   //   updatePlaylistName(name) {
   //     this.setState({ playlistName: name.target.value });
   //   }
-
   //   Answer: The value of name here is going to be whatever you call the onNameChange prop with in Playlist.js. You could call it with an event (which would have a target and a value) but you it's probably better to get the name off the event at the Playlist level and just call this with the actual name as a string
   updatePlaylistName(name) {
     this.setState({ playlistName: name });
@@ -96,7 +90,7 @@ class App extends Component {
   savePlaylist() {
     const trackURIs = this.state.playlistTracks.id.map();
   }
-  // number 67 In App.js create a method called search with the following functionality: Accepts a search term, Logs the term to the console
+  // number 67 In App.js create a method called search with the following functionality: Accepts a search term, Logs the term to the console. In a later assessment, we will hook this method up to the Spotify API.
   search(term) {
     Spotify.search(term).then(term => {
       this.setState({ SearchResults: term });
