@@ -4,6 +4,7 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+// import Spotify from "...//util/Spotify";
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,8 @@ class App extends Component {
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
+    this.search = this.search.bind(this);
   }
 
   addTrack(track) {
@@ -66,7 +69,7 @@ class App extends Component {
       this.setState({ playlistTracks });
     }
   }
-  //   create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
+  //   number 49 create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
   removeTrack(track) {
     const playlistTracks = this.state;
 
@@ -76,9 +79,18 @@ class App extends Component {
     this.setState({ playlistTracks, tmpTracks });
   }
 
-  //   In App.js create a method called updatePlaylistName with the following functionality: Accepts a name argument, Sets the state of the playlist name to the input argument
+  //   number 57 In App.js create a method called updatePlaylistName with the following functionality: Accepts a name argument, Sets the state of the playlist name to the input argument
   updatePlaylistName(name) {
     this.setState({ playlistName: name.target.value });
+  }
+  //   number 63
+  savePlaylist() {
+    const trackURIs = this.state.playlistTracks.id.map();
+  }
+  // number 67 In App.js create a method called search with the following functionality: Accepts a search term, Logs the term to the console
+  search() {
+    const term = "";
+    console.log(term);
   }
 
   render() {
@@ -88,7 +100,7 @@ class App extends Component {
           Ja<span className="highlight">mmm</span>ing
         </h1>
         <div className="App">
-          <SearchBar />
+          <SearchBar onSearch={this.search} />
           <div className="App-playlist">
             <SearchResults
               searchResults={this.state.SearchResults}
@@ -99,6 +111,7 @@ class App extends Component {
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
+              onSave={this.savePlaylist}
             />
           </div>
         </div>
