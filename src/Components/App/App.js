@@ -61,22 +61,24 @@ class App extends Component {
   }
 
   addTrack(track) {
-    const playlistTracks = this.state;
+    const { playlistTracks } = this.state;
+
     if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
-    } else {
-      playlistTracks.push(track);
-      this.setState({ playlistTracks });
     }
+
+    playlistTracks.push(track);
+    this.setState({ playlistTracks });
   }
   //   number 49 create a method called removeTrack with the following functionality: Accepts a track argument, Uses the track's id property to filter it out of playlistTracks, Sets the new state of the playlist
   removeTrack(track) {
-    const playlistTracks = this.state;
+    const { playlistTracks } = this.state;
 
     const tmpTracks = playlistTracks.filter(
       savedTrack => savedTrack.id !== track.id
     );
-    this.setState({ playlistTracks, tmpTracks });
+
+    this.setState({ playlistTracks: tmpTracks });
   }
 
   //   number 57 In App.js create a method called updatePlaylistName with the following functionality: Accepts a name argument, Sets the state of the playlist name to the input argument
