@@ -1,6 +1,6 @@
 // starts at 72
 const clientID = "bb0166aaa72b46d28e910d6993d37fbe";
-const redirectURI = "http://localhost:3000/";
+const redirectURL = "http://localhost:3000/";
 var userAccessToken = "";
 
 const Spotify = {
@@ -13,20 +13,20 @@ const Spotify = {
 
   //   If the access token and expiration time are in the URL, implement the following steps: Set the access token value, Set a variable for expiration time, Set the access token to expire at the value for expiration time, Clear the parameters from the URL, so the app doesn't try grabbing the access token after it has expired, The hint below contains the code that wipes the access token and URL parameters.
 
-  //   Back in your conditional statement, redirect users to the following URL: https://accounts.spotify.com/authorize?client_id=CLIENT_ID&response_type=token&scope=playlist-modify-public&redirect_uri=REDIRECT_URI. Interpolate your client ID and redirect URI variables In place of CLIENT_ID and REDIRECT_URI.
+  //   Back in your conditional statement, redirect users to the following URL: . Interpolate your client ID and redirect URI variables In place of CLIENT_ID and REDIRECT_URI.
 
-  // this is what I was able to attempt, but it's not finished, as I got kind of lost
-  // getAccessToken(){
-  //     if(userAccessToken === true){
-  //     return;
-  // } else {
-  //     window.location.href.match((/access_token=([^&]*)/, /expires_in=([^&]*)/)=>{
-  //         redirect(https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI})
-  //     });
-  //     window.setTimeout(() => accessToken = '', expiresIn * 1000);
-  //     window.history.pushState('Access Token', null, '/');
-  //     }
-  // }
+//   this is what I was able to attempt, but it's not finished, as I got kind of lost
+  getAccessToken(){
+      if(userAccessToken === true){
+      return;
+  } else {
+      window.location.href.match((access_token=([^&]*), expires_in=([^&]*))=>{
+          redirect(`https://accounts.spotify.com/authorize?client_id=${clientID&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURL}`)
+      });
+      window.setTimeout(() => accessToken = '', expiresIn * 1000);
+      window.history.pushState('Access Token', null, '/');
+      }
+  }
 
   search(term) {
     return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
