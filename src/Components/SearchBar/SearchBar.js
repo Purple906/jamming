@@ -11,7 +11,7 @@ class SearchBar extends Component {
 
   // number 69 In SearchBar.js, create a method called search that passes the state of the term to this.props.onSearch
   search(e) {
-    this.props.onSearch(this.search.term);
+    this.props.onSearch(this.state.term);
     e.preventDefault();
   }
 
@@ -26,7 +26,7 @@ class SearchBar extends Component {
           onChange={this.handleTermChange}
           placeholder="Enter A Song, Album, or Artist"
         />
-        <a>SEARCH</a>
+        <a onClick={this.search}>SEARCH</a>
       </div>
     );
   }

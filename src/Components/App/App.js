@@ -92,8 +92,9 @@ class App extends Component {
   }
   // number 67 In App.js create a method called search with the following functionality: Accepts a search term, Logs the term to the console. In a later assessment, we will hook this method up to the Spotify API.
   search(term) {
-    Spotify.search(term).then(term => {
-      this.setState({ SearchResults: term });
+    console.log(term);
+    Spotify.search(term).then(tracks => {
+      this.setState({ SearchResults: tracks });
     });
   }
 
